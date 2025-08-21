@@ -1,11 +1,17 @@
-import { SupportedFramework, CSSFrameworkConfig } from './types';
-import { 
+import { SupportedFramework, CSSFrameworkConfig } from "./types";
+import {
   installTailwindDependencies,
   createTailwindViteConfig,
   getTailwindStyles,
   getTailwindAppContent,
-} from './tailwind';
-import { getCustomStyles, getDefaultAppContent } from '../templates';
+} from "./tailwind";
+import {
+  installBootstrapDependencies,
+  createBootstrapViteConfig,
+  getBootstrapStyles,
+  getBootstrapAppContent,
+} from "./bootstrap";
+import { getCustomStyles, getDefaultAppContent } from "../templates";
 
 export class FrameworkManager {
   static async setupFramework(
@@ -14,11 +20,15 @@ export class FrameworkManager {
     config: CSSFrameworkConfig
   ): Promise<void> {
     switch (framework) {
-      case 'tailwind':
+      case "tailwind":
         await installTailwindDependencies(projectPath, config.packageManager);
         await createTailwindViteConfig(projectPath, config.language);
         break;
-      case 'none':
+      case "bootstrap":
+        await installBootstrapDependencies(projectPath, config.packageManager);
+        await createBootstrapViteConfig(projectPath, config.language);
+        break;
+      case "none":
       default:
         // No additional setup needed for default styling
         break;
@@ -27,9 +37,11 @@ export class FrameworkManager {
 
   static getStyles(framework: SupportedFramework): string {
     switch (framework) {
-      case 'tailwind':
+      case "tailwind":
         return getTailwindStyles();
-      case 'none':
+      case "bootstrap":
+        return getBootstrapStyles();
+      case "none":
       default:
         return getCustomStyles();
     }
@@ -40,9 +52,11 @@ export class FrameworkManager {
     language: "typescript" | "javascript"
   ): string {
     switch (framework) {
-      case 'tailwind':
+      case "tailwind":
         return getTailwindAppContent(language);
-      case 'none':
+      case "bootstrap":
+        return getBootstrapAppContent(language);
+      case "none":
       default:
         return getDefaultAppContent(language);
     }

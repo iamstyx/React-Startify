@@ -1,7 +1,7 @@
 {
   "name": "react-startify",
-  "version": "1.1.1",
-  "description": "🚀 A powerful CLI tool to quickly scaffold React projects with Vite, automatic folder structure, clean boilerplate, and optional Tailwind CSS integration",
+  "version": "1.2.0",
+  "description": "🚀 A powerful CLI tool to quickly scaffold React projects with Vite, automatic folder structure, clean boilerplate, and optional CSS framework integration (Tailwind CSS, Bootstrap)",
   "main": "dist/index.js",
   "bin": {
     "react-startify": "dist/index.js",
@@ -26,7 +26,16 @@
     "project-generator",
     "tailwind",
     "tailwindcss",
-    "css"
+    "bootstrap",
+    "css",
+    "css-framework",
+    "frontend",
+    "webapp",
+    "starter",
+    "template",
+    "modern",
+    "fast",
+    "development"
   ],
   "author": {
     "name": "Sushant Verma",

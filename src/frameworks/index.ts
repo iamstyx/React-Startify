@@ -1,3 +1,4 @@
-export * from './types';
-export * from './tailwind';
-export * from './manager';
+export * from "./types";
+export * from "./tailwind";
+export * from "./bootstrap";
+export * from "./manager";

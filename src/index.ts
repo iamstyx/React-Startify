@@ -14,7 +14,7 @@ interface ProjectOptions {
   projectName: string;
   language: "typescript" | "javascript";
   packageManager: "npm" | "yarn" | "pnpm";
-  useTailwind: boolean;
+  framework: SupportedFramework;
 }
 
 const packageJson = require("../package.json");
@@ -22,7 +22,11 @@ const packageJson = require("../package.json");
 // Clean header with gradient styling
 function displayHeader() {
   console.log(chalk.cyan.bold("\n🚀 React-Startify"));
-  console.log(chalk.gray("   Quickly scaffold React projects with Vite & automatic folder structure"));
+  console.log(
+    chalk.gray(
+      "   Quickly scaffold React projects with Vite & automatic folder structure"
+    )
+  );
   console.log(chalk.gray(`   v${packageJson.version}\n`));
 }
 
@@ -41,7 +45,8 @@ program
   .option("--yarn", "Use yarn as package manager")
   .option("--pnpm", "Use pnpm as package manager")
   .option("--tailwind", "Include Tailwind CSS")
-  .option("--no-tailwind", "Skip Tailwind CSS")
+  .option("--bootstrap", "Include Bootstrap")
+  .option("--no-framework", "Skip CSS framework")
   .action(async (projectName, options) => {
     displayHeader();
 
@@ -52,12 +57,18 @@ program
       (options.typescript !== undefined || options.javascript !== undefined) &&
       (options.npm || options.yarn || options.pnpm)
     ) {
+      // Determine framework from options
+      let framework: SupportedFramework = "none";
+      if (options.tailwind) framework = "tailwind";
+      else if (options.bootstrap) framework = "bootstrap";
+      else if (options.noFramework) framework = "none";
+
       // Use command line arguments
       projectOptions = {
         projectName,
         language: options.typescript ? "typescript" : "javascript",
         packageManager: options.npm ? "npm" : options.yarn ? "yarn" : "pnpm",
-        useTailwind: options.tailwind !== undefined ? options.tailwind : false,
+        framework,
       };
     } else {
       // Interactive mode
@@ -99,10 +110,15 @@ program
           default: "npm",
         },
         {
-          type: "confirm",
-          name: "useTailwind",
-          message: "Do you want to include Tailwind CSS?",
-          default: false,
+          type: "list",
+          name: "framework",
+          message: "Which CSS framework do you want to use?",
+          choices: [
+            { name: "🎨 Tailwind CSS", value: "tailwind" },
+            { name: "🅱️ Bootstrap", value: "bootstrap" },
+            { name: "🚫 None (Custom CSS)", value: "none" },
+          ],
+          default: "none",
         },
       ]);
 
@@ -113,7 +129,7 @@ program
   });
 
 async function createProject(options: ProjectOptions) {
-  const { projectName, language, packageManager, useTailwind } = options;
+  const { projectName, language, packageManager, framework } = options;
   const projectPath = path.resolve(process.cwd(), projectName);
 
   // Check if directory already exists
@@ -143,11 +159,10 @@ async function createProject(options: ProjectOptions) {
     spinner.text = "Creating boilerplate files...";
 
     // Replace default files with custom boilerplate
-    await createBoilerplateFiles(projectPath, language, useTailwind);
+    await createBoilerplateFiles(projectPath, language, framework);
 
     // Create Vite config and install framework if needed
-    if (useTailwind) {
-      const framework: SupportedFramework = "tailwind";
+    if (framework !== "none") {
       await FrameworkManager.setupFramework(framework, projectPath, {
         language,
         packageManager,
@@ -169,24 +184,51 @@ async function createProject(options: ProjectOptions) {
     console.log("\n" + chalk.green.bold("🎉 Your React project is ready!"));
     console.log("\n" + chalk.cyan.bold("📁 Project Structure:"));
     console.log(chalk.gray("   📂 src/"));
-    console.log(chalk.gray("     📂 components/    ") + chalk.dim("(reusable components)"));
-    console.log(chalk.gray("     📂 pages/         ") + chalk.dim("(page components)"));
-    console.log(chalk.gray("     📂 hooks/         ") + chalk.dim("(custom hooks)"));
-    console.log(chalk.gray("     📂 store/         ") + chalk.dim("(state management)"));
-    console.log(chalk.gray("     📂 utils/         ") + chalk.dim("(utility functions)"));
-    console.log(chalk.gray("     📂 assets/        ") + chalk.dim("(images & styles)"));
+    console.log(
+      chalk.gray("     📂 components/    ") + chalk.dim("(reusable components)")
+    );
+    console.log(
+      chalk.gray("     📂 pages/         ") + chalk.dim("(page components)")
+    );
+    console.log(
+      chalk.gray("     📂 hooks/         ") + chalk.dim("(custom hooks)")
+    );
+    console.log(
+      chalk.gray("     📂 store/         ") + chalk.dim("(state management)")
+    );
+    console.log(
+      chalk.gray("     📂 utils/         ") + chalk.dim("(utility functions)")
+    );
+    console.log(
+      chalk.gray("     📂 assets/        ") + chalk.dim("(images & styles)")
+    );
 
-    if (useTailwind) {
+    if (framework !== "none") {
       console.log("\n" + chalk.blue.bold("🎨 Styling:"));
-      console.log(chalk.gray("   ✨ Tailwind CSS configured and ready to use"));
-      console.log(chalk.gray("   📄 Vite config updated with Tailwind plugin"));
+      if (framework === "tailwind") {
+        console.log(
+          chalk.gray("   ✨ Tailwind CSS configured and ready to use")
+        );
+        console.log(
+          chalk.gray("   📄 Vite config updated with Tailwind plugin")
+        );
+      } else if (framework === "bootstrap") {
+        console.log(chalk.gray("   ✨ Bootstrap configured and ready to use"));
+        console.log(chalk.gray("   📄 Bootstrap CSS and JS imported"));
+      }
     }
 
     console.log("\n" + chalk.yellow.bold("🚀 Next Steps:"));
     console.log(chalk.white(`   cd ${chalk.cyan(projectName)}`));
-    console.log(chalk.white(`   ${chalk.cyan(getRunCommand(packageManager))} dev`));
+    console.log(
+      chalk.white(`   ${chalk.cyan(getRunCommand(packageManager))} dev`)
+    );
 
-    console.log("\n" + chalk.magenta("✨ Happy coding with React-Startify! ") + chalk.red("❤️"));
+    console.log(
+      "\n" +
+        chalk.magenta("✨ Happy coding with React-Startify! ") +
+        chalk.red("❤️")
+    );
   } catch (error) {
     spinner.fail(chalk.red("❌ Failed to create project"));
     console.error(chalk.red(error));
@@ -213,11 +255,11 @@ async function createFolderStructure(projectPath: string) {
 async function createBoilerplateFiles(
   projectPath: string,
   language: "typescript" | "javascript",
-  useTailwind: boolean
+  framework: SupportedFramework
 ) {
   // Create a clean App component
   const appExtension = language === "typescript" ? "tsx" : "jsx";
-  const appContent = getAppContent(language, useTailwind);
+  const appContent = getAppContent(language, framework);
 
   await fs.writeFile(
     path.join(projectPath, `src/App.${appExtension}`),
@@ -225,12 +267,11 @@ async function createBoilerplateFiles(
   );
 
   // Update the existing index.css with custom styles
-  const framework: SupportedFramework = useTailwind ? "tailwind" : "none";
   const customStyles = FrameworkManager.getStyles(framework);
   const indexCssPath = path.join(projectPath, "src/index.css");
 
-  if (useTailwind) {
-    // For Tailwind, replace the entire index.css content
+  if (framework === "tailwind" || framework === "bootstrap") {
+    // For CSS frameworks, replace the entire index.css content
     await fs.writeFile(indexCssPath, customStyles);
   } else {
     // Read existing index.css and modify it (original behavior)
@@ -291,8 +332,10 @@ function getRunCommand(packageManager: string): string {
   }
 }
 
-function getAppContent(language: "typescript" | "javascript", useTailwind: boolean = false): string {
-  const framework: SupportedFramework = useTailwind ? "tailwind" : "none";
+function getAppContent(
+  language: "typescript" | "javascript",
+  framework: SupportedFramework
+): string {
   return FrameworkManager.getAppContent(framework, language);
 }
 

@@ -9,12 +9,13 @@ frameworks/
 ├── index.ts          # Main exports
 ├── types.ts          # TypeScript interfaces and types
 ├── manager.ts        # Central framework management
-└── tailwind.ts       # Tailwind CSS specific implementation
+├── tailwind.ts       # Tailwind CSS specific implementation
+└── bootstrap.ts      # Bootstrap specific implementation
 ```
 
 ## Adding a New CSS Framework
 
-To add support for a new CSS framework (e.g., Bootstrap, Styled Components):
+To add support for a new CSS framework (e.g., Styled Components, Material-UI):
 
 1. **Create framework file**: `src/frameworks/[framework-name].ts`
 2. **Add to types**: Update `SupportedFramework` type in `types.ts`

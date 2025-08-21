@@ -9,7 +9,7 @@
 
 **The fastest way to create production-ready React applications**
 
-*Zero configuration • Modern tooling • Best practices built-in*
+_Zero configuration • Modern tooling • Best practices built-in_
 
 [Installation](#installation) • [Quick Start](#quick-start) • [Examples](#examples) • [Documentation](#documentation)
 
@@ -23,15 +23,15 @@ React-Startify eliminates the complexity of setting up modern React projects. In
 
 ### ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| ⚡ **Blazing Fast** | Powered by Vite for instant hot reload and optimized builds |
-| � **Zero Config** | Works out of the box with sensible defaults |
-| 📁 **Smart Structure** | Industry-standard folder organization for scalable projects |
-| 🔷 **TypeScript First** | Full TypeScript support with proper configurations |
-| 🎨 **Tailwind Ready** | Optional Tailwind CSS with optimized setup |
-| 📦 **Flexible** | Support for npm, yarn, and pnpm |
-| 🚀 **Production Ready** | Optimized builds and performance best practices |
+| Feature                    | Description                                                 |
+| -------------------------- | ----------------------------------------------------------- |
+| ⚡ **Blazing Fast**        | Powered by Vite for instant hot reload and optimized builds |
+| � **Zero Config**          | Works out of the box with sensible defaults                 |
+| 📁 **Smart Structure**     | Industry-standard folder organization for scalable projects |
+| 🔷 **TypeScript First**    | Full TypeScript support with proper configurations          |
+| 🎨 **CSS Framework Ready** | Optional Tailwind CSS or Bootstrap with optimized setup     |
+| 📦 **Flexible**            | Support for npm, yarn, and pnpm                             |
+| 🚀 **Production Ready**    | Optimized builds and performance best practices             |
 
 ## 🚀 Quick Start
 
@@ -92,10 +92,11 @@ react-startify
 ```
 
 The CLI will guide you through:
+
 - 📝 Project name selection
 - 🔤 Language preference (TypeScript/JavaScript)
 - 📦 Package manager choice (npm/yarn/pnpm)
-- 🎨 Tailwind CSS integration
+- 🎨 CSS framework selection (Tailwind CSS/Bootstrap/None)
 - ⚙️ Additional configurations
 
 ### ⚡ Command Line Mode
@@ -106,8 +107,11 @@ For automated workflows and CI/CD:
 # TypeScript + npm + Tailwind
 react-startify my-app --typescript --npm --tailwind
 
-# JavaScript + yarn (no Tailwind)
-react-startify my-app --javascript --yarn --no-tailwind
+# TypeScript + npm + Bootstrap
+react-startify my-app --typescript --npm --bootstrap
+
+# JavaScript + yarn (no CSS framework)
+react-startify my-app --javascript --yarn --no-framework
 
 # TypeScript + pnpm + Tailwind
 react-startify my-app --typescript --pnpm --tailwind
@@ -115,17 +119,18 @@ react-startify my-app --typescript --pnpm --tailwind
 
 ### 🛠️ Command Options
 
-| Option | Alias | Description |
-|--------|-------|-------------|
-| `--typescript` | `-t` | Use TypeScript (default) |
-| `--javascript` | `-j` | Use JavaScript |
-| `--npm` | | Use npm as package manager |
-| `--yarn` | | Use yarn as package manager |
-| `--pnpm` | | Use pnpm as package manager |
-| `--tailwind` | | Include Tailwind CSS setup |
-| `--no-tailwind` | | Skip Tailwind CSS (default) |
-| `--help` | `-h` | Show help information |
-| `--version` | `-v` | Show version number |
+| Option           | Alias | Description                  |
+| ---------------- | ----- | ---------------------------- |
+| `--typescript`   | `-t`  | Use TypeScript (default)     |
+| `--javascript`   | `-j`  | Use JavaScript               |
+| `--npm`          |       | Use npm as package manager   |
+| `--yarn`         |       | Use yarn as package manager  |
+| `--pnpm`         |       | Use pnpm as package manager  |
+| `--tailwind`     |       | Include Tailwind CSS setup   |
+| `--bootstrap`    |       | Include Bootstrap setup      |
+| `--no-framework` |       | Skip CSS framework (default) |
+| `--help`         | `-h`  | Show help information        |
+| `--version`      | `-v`  | Show version number          |
 
 ### 🔄 Shorthand Alias
 
@@ -183,18 +188,33 @@ Say goodbye to the generic Vite template! React-Startify includes a stunning wel
 - 📱 **Responsive Layout**: Looks great on all devices
 - 🔗 **Helpful Links**: Quick access to documentation and resources
 
-### � Tailwind CSS Integration
+### 🎨 CSS Framework Integration
+
+Choose from popular CSS frameworks with zero configuration:
+
+#### Tailwind CSS
 
 When you choose Tailwind CSS, you get:
 
 - ✅ **Auto-Installation**: All required packages installed automatically
   - `tailwindcss` - Core Tailwind CSS framework
-  - `@tailwindcss/typography` - Beautiful typography defaults
+  - `@tailwindcss/vite` - Vite integration plugin
   - `autoprefixer` - CSS vendor prefixing
 - ⚙️ **Pre-configured Setup**: Vite integration ready to go
 - 🎨 **Styled Welcome Page**: Modern design using Tailwind utilities
 - 🔧 **Optimized Config**: PurgeCSS and JIT mode enabled
 - 📐 **Design System**: Custom color palette and spacing scale
+
+#### Bootstrap
+
+When you choose Bootstrap, you get:
+
+- ✅ **Auto-Installation**: Bootstrap package installed automatically
+  - `bootstrap` - Complete Bootstrap framework with CSS and JS
+- ⚙️ **Pre-configured Setup**: CSS and JS imports ready to use
+- 🎨 **Styled Welcome Page**: Beautiful design using Bootstrap components
+- 🔧 **Component Library**: Full access to Bootstrap's component system
+- 📱 **Responsive Grid**: 12-column grid system for layouts
 
 ### 🏗️ Optimized Development Environment
 
@@ -216,10 +236,10 @@ When you choose Tailwind CSS, you get:
 
 No matter your preference, we've got you covered:
 
-| Manager | Features |
-|---------|----------|
-| **npm** | Industry standard, reliable, great ecosystem |
-| **yarn** | Fast, secure, great for monorepos |
+| Manager  | Features                                           |
+| -------- | -------------------------------------------------- |
+| **npm**  | Industry standard, reliable, great ecosystem       |
+| **yarn** | Fast, secure, great for monorepos                  |
 | **pnpm** | Disk efficient, fast, strict dependency management |
 
 ## 📚 Examples
@@ -234,6 +254,17 @@ npm run dev
 ```
 
 Perfect for: SaaS applications, dashboards, e-commerce sites
+
+### 🅱️ Create a Bootstrap Powered App
+
+```bash
+# TypeScript + Bootstrap for component-rich applications
+react-startify my-enterprise-app --typescript --npm --bootstrap
+cd my-enterprise-app
+npm run dev
+```
+
+Perfect for: Enterprise applications, admin panels, data-heavy interfaces
 
 ### ⚡ Quick Prototype Setup
 
@@ -274,24 +305,24 @@ Perfect for: First-time users, exploring options
 
 ## 🔧 Requirements
 
-| Requirement | Version | Notes |
-|-------------|---------|--------|
-| **Node.js** | 16.0.0+ | LTS versions recommended |
-| **Package Manager** | Any | npm, yarn, or pnpm |
-| **Operating System** | Any | Windows, macOS, Linux |
+| Requirement          | Version | Notes                    |
+| -------------------- | ------- | ------------------------ |
+| **Node.js**          | 16.0.0+ | LTS versions recommended |
+| **Package Manager**  | Any     | npm, yarn, or pnpm       |
+| **Operating System** | Any     | Windows, macOS, Linux    |
 
 ## 🆚 Comparison
 
-| Feature | React-Startify | Create React App | Vite React Template |
-|---------|----------------|------------------|-------------------|
-| ⚡ Build Tool | Vite 5+ | Webpack | Vite |
-| 📁 Folder Structure | ✅ Organized | ❌ Basic | ❌ Minimal |
-| 🎨 Welcome Page | ✅ Beautiful | ❌ Generic | ❌ Basic |
-| 🔷 TypeScript | ✅ Optimized | ⚠️ Basic | ⚠️ Basic |
-| 🎨 Tailwind | ✅ Pre-configured | ❌ Manual | ❌ Manual |
-| 📦 Package Managers | ✅ All supported | ⚠️ npm/yarn | ⚠️ Limited |
-| 🚀 Performance | ✅ Optimized | ❌ Slow | ✅ Fast |
-| 📚 Documentation | ✅ Comprehensive | ✅ Good | ⚠️ Basic |
+| Feature             | React-Startify        | Create React App | Vite React Template |
+| ------------------- | --------------------- | ---------------- | ------------------- |
+| ⚡ Build Tool       | Vite 5+               | Webpack          | Vite                |
+| 📁 Folder Structure | ✅ Organized          | ❌ Basic         | ❌ Minimal          |
+| 🎨 Welcome Page     | ✅ Beautiful          | ❌ Generic       | ❌ Basic            |
+| 🔷 TypeScript       | ✅ Optimized          | ⚠️ Basic         | ⚠️ Basic            |
+| 🎨 CSS Frameworks   | ✅ Tailwind/Bootstrap | ❌ Manual        | ❌ Manual           |
+| 📦 Package Managers | ✅ All supported      | ⚠️ npm/yarn      | ⚠️ Limited          |
+| 🚀 Performance      | ✅ Optimized          | ❌ Slow          | ✅ Fast             |
+| 📚 Documentation    | ✅ Comprehensive      | ✅ Good          | ⚠️ Basic            |
 
 ## 🛠️ Development Commands
 
@@ -322,31 +353,37 @@ npm run lint         # or yarn lint / pnpm lint
 <summary>🔴 "Command not found: react-startify"</summary>
 
 **Solution**: Make sure you've installed the package globally:
+
 ```bash
 npm install -g react-startify
 ```
 
 Or use npx directly:
+
 ```bash
 npx react-startify my-app
 ```
+
 </details>
 
 <details>
 <summary>🔴 Permission errors on macOS/Linux</summary>
 
 **Solution**: Use sudo for global installation:
+
 ```bash
 sudo npm install -g react-startify
 ```
 
 Or use a Node version manager like nvm.
+
 </details>
 
 <details>
 <summary>🔴 "Module not found" errors</summary>
 
 **Solution**: Clear your package manager cache:
+
 ```bash
 # npm
 npm cache clean --force
@@ -357,15 +394,18 @@ yarn cache clean
 # pnpm
 pnpm store prune
 ```
+
 </details>
 
 <details>
 <summary>🔴 Tailwind styles not working</summary>
 
 **Solution**: Ensure you've imported the CSS file in your `main.tsx`:
+
 ```typescript
-import './index.css'
+import "./index.css";
 ```
+
 </details>
 
 ### Getting Help
