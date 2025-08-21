@@ -2,6 +2,29 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.1.1] - 2025-08-22
+
+### Refactored
+
+- **Code Organization**: Separated CSS framework logic into dedicated modules
+  - Created `src/frameworks/` directory for framework-specific code
+  - Created `src/templates/` directory for boilerplate templates
+  - Introduced `FrameworkManager` class for extensible framework support
+  - Moved Tailwind CSS logic to `src/frameworks/tailwind.ts`
+  - Moved default templates to `src/templates/boilerplate.ts`
+
+### Improved
+
+- **Maintainability**: Better separation of concerns and modularity
+- **Extensibility**: Framework architecture ready for additional CSS frameworks
+- **Code Quality**: Reduced main file complexity and improved readability
+
+### Technical
+
+- TypeScript interfaces for framework configuration
+- Centralized framework management system
+- Cleaner import structure and dependencies
+
 ## [1.1.0] - 2025-08-21
 
 ### Added
