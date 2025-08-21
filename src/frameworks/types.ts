@@ -26,7 +26,17 @@ export interface CSSFramework {
 
 export type SupportedFramework = "tailwind" | "bootstrap" | "none";
 
-export type OptionalPackage = "axios" | "react-icons";
+export type OptionalPackage = 
+  | "axios" 
+  | "react-icons"
+  | "react-router"
+  | "zustand"
+  | "tanstack-query"
+  | "framer-motion"
+  | "styled-components"
+  | "react-hook-form"
+  | "date-fns"
+  | "uuid";
 
 export interface OptionalPackageDefinition {
   name: string;

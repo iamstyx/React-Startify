@@ -2,10 +2,11 @@
 
 # React-Startify 🚀
 
-<img src="https://img.shields.io/npm/v/react-startify?style=for-the-badge&color=blue" alt="npm version">
+<img src="https://img.shields.io/npm/v/react-startify?style=for# TypeScript + npm + Bootstrap + Optional packages
+react-startify my-feature-app --typescript --npm --bootstrap --axios --react-icons --react-router --zustandhe-badge&color=blue" alt="npm version">
 <img src="https://img.shields.io/npm/dt/react-startify?style=for-the-badge&color=green" alt="downloads">
 <img src="https://img.shields.io/github/license/iamstyx/React-Startify?style=for-the-badge&color=orange" alt="license">
-<img src="https://img.shields.io/npm/node/react-startify?style=for-the-badge&color=red" alt="node version">
+
 
 **The fastest way to create production-ready React applications**
 
@@ -97,7 +98,7 @@ The CLI will guide you through:
 - 🔤 Language preference (TypeScript/JavaScript)
 - 📦 Package manager choice (npm/yarn/pnpm)
 - 🎨 CSS framework selection (Tailwind CSS/Bootstrap/None)
-- 📦 Optional packages selection (Axios, React Icons)
+- 📦 Optional packages selection (Axios, React Icons, React Router, Zustand, TanStack Query, Framer Motion, Styled Components, React Hook Form, Date-fns, UUID)
 - ⚙️ Additional configurations
 
 ### ⚡ Command Line Mode
@@ -130,9 +131,17 @@ react-startify my-app --typescript --pnpm --tailwind --all-packages
 | `--tailwind`     |       | Include Tailwind CSS setup   |
 | `--bootstrap`    |       | Include Bootstrap setup      |
 | `--no-framework` |       | Skip CSS framework (default) |
-| `--axios`        |       | Include Axios HTTP client    |
-| `--react-icons`  |       | Include React Icons library  |
-| `--all-packages` |       | Include all optional packages |
+| `--axios`          |       | Include Axios HTTP client    |
+| `--react-icons`    |       | Include React Icons library  |
+| `--react-router`   |       | Include React Router for routing |
+| `--zustand`        |       | Include Zustand state management |
+| `--tanstack-query` |       | Include TanStack Query for data fetching |
+| `--framer-motion`  |       | Include Framer Motion for animations |
+| `--styled-components` |    | Include Styled Components |
+| `--react-hook-form` |      | Include React Hook Form |
+| `--date-fns`       |       | Include Date-fns date utilities |
+| `--uuid`           |       | Include UUID generator |
+| `--all-packages`   |       | Include all optional packages |
 | `--help`         | `-h`  | Show help information        |
 | `--version`      | `-v`  | Show version number          |
 
@@ -273,13 +282,13 @@ Perfect for: Enterprise applications, admin panels, data-heavy interfaces
 ### 📦 Create a Feature-Rich App with Optional Packages
 
 ```bash
-# Full-featured app with Axios and React Icons
-react-startify my-full-app --typescript --npm --bootstrap --axios --react-icons
+# Full-featured app with state management and routing
+react-startify my-full-app --typescript --npm --tailwind --react-router --zustand --tanstack-query --framer-motion
 cd my-full-app
 npm run dev
 ```
 
-Perfect for: API-driven applications, data visualization, modern UIs
+Perfect for: Complex SPAs, data-driven apps, modern web applications
 
 #### Available Optional Packages
 
@@ -287,6 +296,14 @@ Perfect for: API-driven applications, data visualization, modern UIs
 |---------|-------------|-----------|
 | **Axios** | Promise-based HTTP client | API calls, data fetching, REST integration |
 | **React Icons** | Popular icon libraries as React components | UI icons, Font Awesome, Feather, Material Design |
+| **React Router** | Declarative routing for React | Single-page apps, navigation, dynamic routing |
+| **Zustand** | Small, fast state management | Global state, stores, state sharing |
+| **TanStack Query** | Powerful data synchronization | Server state, caching, background updates |
+| **Framer Motion** | Production-ready motion library | Animations, gestures, page transitions |
+| **Styled Components** | CSS-in-JS styling library | Component styling, theming, dynamic styles |
+| **React Hook Form** | Performant forms with validation | Form handling, validation, user input |
+| **Date-fns** | Modern JavaScript date utility | Date manipulation, formatting, calculations |
+| **UUID** | RFC-compliant UUID generator | Unique identifiers, keys, database IDs |
 
 ### ⚡ Quick Prototype Setup
 
@@ -324,6 +341,36 @@ react-startify
 ```
 
 Perfect for: First-time users, exploring options
+
+### 🚀 Specialized Project Templates
+
+#### Modern E-commerce App
+```bash
+# Complete setup for online stores
+react-startify my-shop --typescript --npm --tailwind --react-router --zustand --tanstack-query --react-hook-form --uuid
+```
+**Includes:** Routing, global state, data fetching, form handling, unique IDs
+
+#### Animated Portfolio Site
+```bash
+# Creative portfolio with smooth animations
+react-startify my-portfolio --typescript --yarn --tailwind --react-router --framer-motion --styled-components --date-fns
+```
+**Includes:** Page transitions, custom styling, date utilities
+
+#### Enterprise Dashboard
+```bash
+# Data-heavy admin interface
+react-startify my-dashboard --typescript --pnpm --bootstrap --react-router --zustand --tanstack-query --axios --react-icons --uuid
+```
+**Includes:** Professional UI, state management, API integration, data visualization
+
+#### All-Inclusive Project
+```bash
+# Everything included for maximum flexibility
+react-startify my-mega-app --typescript --npm --tailwind --all-packages
+```
+**Includes:** All 10 optional packages for comprehensive development
 
 ## 🔧 Requirements
 

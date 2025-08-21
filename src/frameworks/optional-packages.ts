@@ -13,6 +13,54 @@ export const OPTIONAL_PACKAGES: Record<OptionalPackage, OptionalPackageDefinitio
     packages: ["react-icons"],
     typePackages: [],
     description: "Popular icon libraries as React components (Font Awesome, Feather, Material Design, etc.)"
+  },
+  "react-router": {
+    name: "React Router",
+    packages: ["react-router-dom"],
+    typePackages: ["@types/react-router-dom"],
+    description: "Declarative routing for React applications"
+  },
+  "zustand": {
+    name: "Zustand",
+    packages: ["zustand"],
+    typePackages: [],
+    description: "Small, fast, and scalable state management solution"
+  },
+  "tanstack-query": {
+    name: "TanStack Query",
+    packages: ["@tanstack/react-query"],
+    typePackages: [],
+    description: "Powerful data synchronization for React (formerly React Query)"
+  },
+  "framer-motion": {
+    name: "Framer Motion",
+    packages: ["framer-motion"],
+    typePackages: [],
+    description: "Production-ready motion library for React"
+  },
+  "styled-components": {
+    name: "Styled Components",
+    packages: ["styled-components"],
+    typePackages: ["@types/styled-components"],
+    description: "CSS-in-JS library for styling React components"
+  },
+  "react-hook-form": {
+    name: "React Hook Form",
+    packages: ["react-hook-form"],
+    typePackages: [],
+    description: "Performant, flexible forms with easy validation"
+  },
+  "date-fns": {
+    name: "Date-fns",
+    packages: ["date-fns"],
+    typePackages: [],
+    description: "Modern JavaScript date utility library"
+  },
+  "uuid": {
+    name: "UUID",
+    packages: ["uuid"],
+    typePackages: ["@types/uuid"],
+    description: "RFC4122 (v1, v4, and v5) UUIDs generator"
   }
 };
 
@@ -69,6 +117,30 @@ export function getOptionalPackageImports(packages: OptionalPackage[]): string[]
       case "react-icons":
         imports.push("import { FaReact, FaHeart, FaRocket, FaCog } from 'react-icons/fa';");
         break;
+      case "react-router":
+        imports.push("import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';");
+        break;
+      case "zustand":
+        imports.push("import { create } from 'zustand';");
+        break;
+      case "tanstack-query":
+        imports.push("import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';");
+        break;
+      case "framer-motion":
+        imports.push("import { motion, AnimatePresence } from 'framer-motion';");
+        break;
+      case "styled-components":
+        imports.push("import styled from 'styled-components';");
+        break;
+      case "react-hook-form":
+        imports.push("import { useForm, Controller } from 'react-hook-form';");
+        break;
+      case "date-fns":
+        imports.push("import { format, parseISO, addDays } from 'date-fns';");
+        break;
+      case "uuid":
+        imports.push("import { v4 as uuidv4 } from 'uuid';");
+        break;
     }
   }
   
@@ -103,6 +175,86 @@ export function getOptionalPackageUsageExamples(packages: OptionalPackage[]): st
           </div>
         `);
         break;
+      case "react-router":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">🔗 React Router:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              &lt;BrowserRouter&gt;&lt;Routes&gt;&lt;Route path="/" element={&lt;Home /&gt;} /&gt;&lt;/Routes&gt;&lt;/BrowserRouter&gt;
+            </code>
+          </div>
+        `);
+        break;
+      case "zustand":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">🐻 Zustand State:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              const useStore = create((set) => ({ count: 0, increment: () => set((state) => ({ count: state.count + 1 })) }))
+            </code>
+          </div>
+        `);
+        break;
+      case "tanstack-query":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">🔄 TanStack Query:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              const { data, isLoading } = useQuery({ queryKey: ['data'], queryFn: fetchData })
+            </code>
+          </div>
+        `);
+        break;
+      case "framer-motion":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">✨ Framer Motion:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              &lt;motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}&gt;Animated!&lt;/motion.div&gt;
+            </code>
+          </div>
+        `);
+        break;
+      case "styled-components":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">💅 Styled Components:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              const Button = styled.button\`background: blue; color: white;\`
+            </code>
+          </div>
+        `);
+        break;
+      case "react-hook-form":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">📋 React Hook Form:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              const { register, handleSubmit } = useForm()
+            </code>
+          </div>
+        `);
+        break;
+      case "date-fns":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">📅 Date-fns:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              format(new Date(), 'yyyy-MM-dd')
+            </code>
+          </div>
+        `);
+        break;
+      case "uuid":
+        examples.push(`
+          <div className="mb-3">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">🆔 UUID:</h4>
+            <code className="text-xs bg-gray-100 p-2 rounded block">
+              const id = uuidv4() // generates unique ID
+            </code>
+          </div>
+        `);
+        break;
     }
   }
   
@@ -134,6 +286,86 @@ export function getOptionalPackageBootstrapUsageExamples(packages: OptionalPacka
               <FaRocket className="text-success" />
               <FaCog className="text-secondary" />
             </div>
+          </div>
+        `);
+        break;
+      case "react-router":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">🔗 React Router:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              &lt;BrowserRouter&gt;&lt;Routes&gt;&lt;Route path="/" element={&lt;Home /&gt;} /&gt;&lt;/Routes&gt;&lt;/BrowserRouter&gt;
+            </code>
+          </div>
+        `);
+        break;
+      case "zustand":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">🐻 Zustand State:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              const useStore = create((set) => ({ count: 0, increment: () => set((state) => ({ count: state.count + 1 })) }))
+            </code>
+          </div>
+        `);
+        break;
+      case "tanstack-query":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">🔄 TanStack Query:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              const { data, isLoading } = useQuery({ queryKey: ['data'], queryFn: fetchData })
+            </code>
+          </div>
+        `);
+        break;
+      case "framer-motion":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">✨ Framer Motion:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              &lt;motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}&gt;Animated!&lt;/motion.div&gt;
+            </code>
+          </div>
+        `);
+        break;
+      case "styled-components":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">💅 Styled Components:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              const Button = styled.button\`background: blue; color: white;\`
+            </code>
+          </div>
+        `);
+        break;
+      case "react-hook-form":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">📋 React Hook Form:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              const { register, handleSubmit } = useForm()
+            </code>
+          </div>
+        `);
+        break;
+      case "date-fns":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">📅 Date-fns:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              format(new Date(), 'yyyy-MM-dd')
+            </code>
+          </div>
+        `);
+        break;
+      case "uuid":
+        examples.push(`
+          <div className="mb-3">
+            <h5 className="text-sm fw-semibold text-muted mb-2">🆔 UUID:</h5>
+            <code className="small bg-light p-2 rounded d-block">
+              const id = uuidv4() // generates unique ID
+            </code>
           </div>
         `);
         break;

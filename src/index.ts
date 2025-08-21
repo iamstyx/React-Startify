@@ -50,6 +50,14 @@ program
   .option("--no-framework", "Skip CSS framework")
   .option("--axios", "Include Axios for HTTP requests")
   .option("--react-icons", "Include React Icons")
+  .option("--react-router", "Include React Router for routing")
+  .option("--zustand", "Include Zustand for state management")
+  .option("--tanstack-query", "Include TanStack Query for server state")
+  .option("--framer-motion", "Include Framer Motion for animations")
+  .option("--styled-components", "Include Styled Components for CSS-in-JS")
+  .option("--react-hook-form", "Include React Hook Form for form management")
+  .option("--date-fns", "Include Date-fns for date utilities")
+  .option("--uuid", "Include UUID for unique identifiers")
   .option("--all-packages", "Include all optional packages")
   .action(async (projectName, options) => {
     displayHeader();
@@ -70,10 +78,29 @@ program
       // Determine optional packages from options
       let optionalPackages: OptionalPackage[] = [];
       if (options.allPackages) {
-        optionalPackages = ["axios", "react-icons"];
+        optionalPackages = [
+          "axios", 
+          "react-icons", 
+          "react-router", 
+          "zustand", 
+          "tanstack-query", 
+          "framer-motion", 
+          "styled-components", 
+          "react-hook-form", 
+          "date-fns", 
+          "uuid"
+        ];
       } else {
         if (options.axios) optionalPackages.push("axios");
         if (options.reactIcons) optionalPackages.push("react-icons");
+        if (options.reactRouter) optionalPackages.push("react-router");
+        if (options.zustand) optionalPackages.push("zustand");
+        if (options.tanstackQuery) optionalPackages.push("tanstack-query");
+        if (options.framerMotion) optionalPackages.push("framer-motion");
+        if (options.styledComponents) optionalPackages.push("styled-components");
+        if (options.reactHookForm) optionalPackages.push("react-hook-form");
+        if (options.dateFns) optionalPackages.push("date-fns");
+        if (options.uuid) optionalPackages.push("uuid");
       }
 
       // Use command line arguments
@@ -147,6 +174,46 @@ program
             { 
               name: "🎨 React Icons - Popular icon libraries as React components", 
               value: "react-icons",
+              checked: false 
+            },
+            { 
+              name: "🔗 React Router - Declarative routing for React", 
+              value: "react-router",
+              checked: false 
+            },
+            { 
+              name: "🐻 Zustand - Small, fast state management", 
+              value: "zustand",
+              checked: false 
+            },
+            { 
+              name: "🔄 TanStack Query - Powerful data synchronization", 
+              value: "tanstack-query",
+              checked: false 
+            },
+            { 
+              name: "✨ Framer Motion - Production-ready animations", 
+              value: "framer-motion",
+              checked: false 
+            },
+            { 
+              name: "💅 Styled Components - CSS-in-JS styling", 
+              value: "styled-components",
+              checked: false 
+            },
+            { 
+              name: "📋 React Hook Form - Performant forms with validation", 
+              value: "react-hook-form",
+              checked: false 
+            },
+            { 
+              name: "📅 Date-fns - Modern date utility library", 
+              value: "date-fns",
+              checked: false 
+            },
+            { 
+              name: "🆔 UUID - RFC4122 UUID generator", 
+              value: "uuid",
               checked: false 
             },
           ],
@@ -263,10 +330,37 @@ async function createProject(options: ProjectOptions) {
     if (optionalPackages && optionalPackages.length > 0) {
       console.log("\n" + chalk.magenta.bold("📦 Optional Packages:"));
       optionalPackages.forEach((pkg) => {
-        if (pkg === "axios") {
-          console.log(chalk.gray("   📡 Axios - HTTP client for API requests"));
-        } else if (pkg === "react-icons") {
-          console.log(chalk.gray("   🎨 React Icons - Icon libraries as React components"));
+        switch (pkg) {
+          case "axios":
+            console.log(chalk.gray("   📡 Axios - HTTP client for API requests"));
+            break;
+          case "react-icons":
+            console.log(chalk.gray("   🎨 React Icons - Icon libraries as React components"));
+            break;
+          case "react-router":
+            console.log(chalk.gray("   🔗 React Router - Declarative routing for React"));
+            break;
+          case "zustand":
+            console.log(chalk.gray("   🐻 Zustand - Small, fast state management"));
+            break;
+          case "tanstack-query":
+            console.log(chalk.gray("   🔄 TanStack Query - Powerful data synchronization"));
+            break;
+          case "framer-motion":
+            console.log(chalk.gray("   ✨ Framer Motion - Production-ready animations"));
+            break;
+          case "styled-components":
+            console.log(chalk.gray("   💅 Styled Components - CSS-in-JS styling"));
+            break;
+          case "react-hook-form":
+            console.log(chalk.gray("   📋 React Hook Form - Performant forms with validation"));
+            break;
+          case "date-fns":
+            console.log(chalk.gray("   📅 Date-fns - Modern date utility library"));
+            break;
+          case "uuid":
+            console.log(chalk.gray("   🆔 UUID - RFC4122 UUID generator"));
+            break;
         }
       });
     }

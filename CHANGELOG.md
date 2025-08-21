@@ -2,6 +2,35 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.4.0] - 2025-08-22
+
+### Added
+
+- **Expanded Optional Packages Ecosystem**: Major expansion of optional package support
+  - New `--react-router` CLI option for React Router DOM routing
+  - New `--zustand` CLI option for lightweight state management
+  - New `--tanstack-query` CLI option for powerful data synchronization
+  - New `--framer-motion` CLI option for production-ready animations
+  - New `--styled-components` CLI option for CSS-in-JS styling
+  - New `--react-hook-form` CLI option for performant form handling
+  - New `--date-fns` CLI option for modern date utilities
+  - New `--uuid` CLI option for RFC-compliant unique identifiers
+  - Total of 10 optional packages now available
+
+### Enhanced
+
+- **Documentation**: Comprehensive updates to README with specialized project templates
+  - Added Modern E-commerce App template
+  - Added Animated Portfolio Site template  
+  - Added Enterprise Dashboard template
+  - Added All-Inclusive Project template
+  - Extended CLI options table with all new packages
+  - Enhanced package descriptions and use cases
+
+- **Type Safety**: Extended TypeScript definitions for all new optional packages
+  - Proper type definitions for all package combinations
+  - Enhanced build system validation
+
 ## [1.3.0] - 2025-08-22
 
 ### Added
