@@ -2,6 +2,40 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.3.0] - 2025-08-22
+
+### Added
+
+- **Optional Packages Support**: Modular system for adding popular libraries during project creation
+  - New `--axios` CLI option for including Axios HTTP client
+  - New `--react-icons` CLI option for including React Icons library
+  - New `--all-packages` CLI option for including all optional packages
+  - Interactive checkbox selection in wizard mode for package choosing
+  - Automatic installation of packages and TypeScript type definitions
+
+### Enhanced
+
+- **CLI Experience**: Extended with optional package selection capabilities
+  - Interactive checkbox prompts for package selection
+  - Better user feedback during package installation
+  - Improved command-line option parsing for multiple packages
+  - Enhanced success messages showing installed optional packages
+
+### Technical
+
+- **Package Architecture**: Modular optional package system
+  - Type-safe package definitions with TypeScript interfaces
+  - Extensible design for adding future optional packages
+  - Smart dependency management for main and dev packages
+  - Proper handling of TypeScript type packages
+
+### Package Updates
+
+- **Version**: Bumped to 1.3.0
+- **Keywords**: Added axios, react-icons, optional-packages, modular
+- **Description**: Updated to highlight optional package support
+- **Build**: Enhanced distribution for modular package system
+
 ## [1.2.0] - 2025-08-22
 
 ### Added
