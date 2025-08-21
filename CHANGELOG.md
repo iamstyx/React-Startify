@@ -2,6 +2,31 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.1.0] - 2025-08-21
+
+### Added
+
+- **Tailwind CSS Integration**: Optional Tailwind CSS support with automatic configuration
+  - New `--tailwind` and `--no-tailwind` CLI options
+  - Automatic installation of Tailwind CSS, @tailwindcss/vite, and autoprefixer
+  - Pre-configured Vite setup with Tailwind plugin
+  - Modern welcome page using Tailwind utility classes when enabled
+  - Clean CSS imports with `@import "tailwindcss"`
+
+### Changed
+
+- Interactive mode now includes Tailwind CSS option prompt
+- Welcome page design updated with Tailwind classes (when enabled)
+- CSS structure optimized for both custom CSS and Tailwind workflows
+- Enhanced project setup output to show Tailwind status
+
+### Technical
+
+- Added new functions for Tailwind dependency management
+- Improved Vite configuration generation
+- Enhanced boilerplate file creation with conditional styling
+- Better package manager integration for dev dependency installation
+
 ## [1.0.1] - 2025-08-21
 
 ### Improved

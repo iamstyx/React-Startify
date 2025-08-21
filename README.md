@@ -9,6 +9,7 @@ A powerful CLI tool to quickly scaffold React projects with Vite, automatic fold
 🔷 **TypeScript/JavaScript** - Choose your preferred language  
 ⚡ **Vite Powered** - Lightning-fast development experience  
 🎨 **Clean Boilerplate** - Professional welcome page instead of default Vite template  
+🎨 **Tailwind CSS** - Optional Tailwind CSS integration with automatic configuration  
 📦 **Package Manager Choice** - Support for npm, yarn, and pnpm
 
 ## Installation
@@ -44,8 +45,11 @@ react-startify my-app --typescript --npm
 # Create JavaScript project with yarn
 react-startify my-app --javascript --yarn
 
-# Create TypeScript project with pnpm
-react-startify my-app --typescript --pnpm
+# Create TypeScript project with pnpm and Tailwind CSS
+react-startify my-app --typescript --pnpm --tailwind
+
+# Create project without Tailwind CSS
+react-startify my-app --typescript --npm --no-tailwind
 ```
 
 ### Available Options
@@ -55,6 +59,8 @@ react-startify my-app --typescript --pnpm
 - `--npm` - Use npm as package manager
 - `--yarn` - Use yarn as package manager
 - `--pnpm` - Use pnpm as package manager
+- `--tailwind` - Include Tailwind CSS
+- `--no-tailwind` - Skip Tailwind CSS (default)
 
 ## Project Structure
 
@@ -93,6 +99,14 @@ my-app/
 
 Instead of the default Vite template, you get a beautiful welcome page that showcases your project structure and next steps.
 
+### 🎨 Tailwind CSS Integration
+
+Optional Tailwind CSS integration with:
+- Automatic installation of required packages (`tailwindcss`, `@tailwindcss/vite`, `autoprefixer`)
+- Pre-configured Vite setup with Tailwind plugin
+- Modern welcome page using Tailwind utility classes
+- Clean CSS imports ready for development
+
 ### 📁 Organized Folders
 
 Pre-created folders with index files for better organization:
@@ -114,11 +128,11 @@ Full TypeScript support with proper configurations and type definitions.
 
 ## Examples
 
-### Create a TypeScript project
+### Create a TypeScript project with Tailwind CSS
 
 ```bash
-react-startify my-typescript-app --typescript --npm
-cd my-typescript-app
+react-startify my-tailwind-app --typescript --npm --tailwind
+cd my-tailwind-app
 npm run dev
 ```
 
