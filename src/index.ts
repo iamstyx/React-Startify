@@ -16,17 +16,12 @@ interface ProjectOptions {
 
 const packageJson = require("../package.json");
 
-// ASCII Art Banner
-const banner = `
-  ██████╗ ███████╗ █████╗  ██████╗████████╗    ███████╗████████╗ █████╗ ██████╗ ████████╗██╗███████╗██╗   ██╗
-  ██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝    ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝██║██╔════╝╚██╗ ██╔╝
-  ██████╔╝█████╗  ███████║██║        ██║       ███████╗   ██║   ███████║██████╔╝   ██║   ██║█████╗   ╚████╔╝ 
-  ██╔══██╗██╔══╝  ██╔══██║██║        ██║       ╚════██║   ██║   ██╔══██║██╔══██╗   ██║   ██║██╔══╝    ╚██╔╝  
-  ██║  ██║███████╗██║  ██║╚██████╗   ██║       ███████║   ██║   ██║  ██║██║  ██║   ██║   ██║██║        ██║   
-  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝        ╚═╝   
-  
-  🚀 Quickly scaffold React projects with Vite & automatic folder structure
-`;
+// Clean header with gradient styling
+function displayHeader() {
+  console.log(chalk.cyan.bold("\n🚀 React-Startify"));
+  console.log(chalk.gray("   Quickly scaffold React projects with Vite & automatic folder structure"));
+  console.log(chalk.gray(`   v${packageJson.version}\n`));
+}
 
 program
   .name("react-startify")
@@ -43,7 +38,7 @@ program
   .option("--yarn", "Use yarn as package manager")
   .option("--pnpm", "Use pnpm as package manager")
   .action(async (projectName, options) => {
-    console.log(chalk.cyan(banner));
+    displayHeader();
 
     let projectOptions: ProjectOptions;
 
@@ -149,24 +144,22 @@ async function createProject(options: ProjectOptions) {
 
     spinner.succeed(chalk.green("✨ Project created successfully!"));
 
-    // Success message
-    console.log("\n" + chalk.green("🎉 Your React project is ready!"));
-    console.log("\n" + chalk.cyan("📁 Project structure created:"));
-    console.log(chalk.gray("  📂 src/"));
-    console.log(chalk.gray("    📂 components/"));
-    console.log(chalk.gray("    📂 pages/"));
-    console.log(chalk.gray("    📂 hooks/"));
-    console.log(chalk.gray("    📂 store/"));
-    console.log(chalk.gray("    📂 utils/"));
-    console.log(chalk.gray("    📂 assets/"));
-    console.log(chalk.gray("      📂 images/"));
-    console.log(chalk.gray("      📂 styles/"));
+    // Success message with better formatting
+    console.log("\n" + chalk.green.bold("🎉 Your React project is ready!"));
+    console.log("\n" + chalk.cyan.bold("📁 Project Structure:"));
+    console.log(chalk.gray("   📂 src/"));
+    console.log(chalk.gray("     📂 components/    ") + chalk.dim("(reusable components)"));
+    console.log(chalk.gray("     📂 pages/         ") + chalk.dim("(page components)"));
+    console.log(chalk.gray("     📂 hooks/         ") + chalk.dim("(custom hooks)"));
+    console.log(chalk.gray("     📂 store/         ") + chalk.dim("(state management)"));
+    console.log(chalk.gray("     📂 utils/         ") + chalk.dim("(utility functions)"));
+    console.log(chalk.gray("     📂 assets/        ") + chalk.dim("(images & styles)"));
 
-    console.log("\n" + chalk.yellow("🚀 Next steps:"));
-    console.log(chalk.white(`  cd ${projectName}`));
-    console.log(chalk.white(`  ${getRunCommand(packageManager)} dev`));
+    console.log("\n" + chalk.yellow.bold("🚀 Next Steps:"));
+    console.log(chalk.white(`   cd ${chalk.cyan(projectName)}`));
+    console.log(chalk.white(`   ${chalk.cyan(getRunCommand(packageManager))} dev`));
 
-    console.log("\n" + chalk.magenta("✨ Happy coding with React-Startify!"));
+    console.log("\n" + chalk.magenta("✨ Happy coding with React-Startify! ") + chalk.red("❤️"));
   } catch (error) {
     spinner.fail(chalk.red("❌ Failed to create project"));
     console.error(chalk.red(error));
