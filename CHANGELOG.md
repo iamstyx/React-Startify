@@ -2,6 +2,22 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.0.1] - 2025-08-21
+
+### Improved
+
+- **UI/UX Enhancement**: Removed bulky ASCII art banner and replaced with clean, professional header
+- **Better Output Formatting**: Enhanced project structure display with helpful descriptions
+- **Improved Success Messages**: More polished and informative completion messages
+- **Professional Appearance**: Better color scheme and typography for terminal output
+- **Reduced Terminal Clutter**: Cleaner, more readable CLI experience
+
+### Technical
+
+- Optimized display functions for better performance
+- Improved code organization and readability
+- Enhanced visual hierarchy in CLI output
+
 ## [1.0.0] - 2025-08-21
 
 ### Added
