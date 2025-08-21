@@ -1,0 +1,62 @@
+{
+  "name": "react-startify",
+  "version": "1.0.0",
+  "description": "🚀 A powerful CLI tool to quickly scaffold React projects with Vite, automatic folder structure, and clean boilerplate",
+  "main": "dist/index.js",
+  "bin": {
+    "react-startify": "dist/index.js",
+    "startify": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "node test.js --simple",
+    "test:cli": "npm run build && node test.js",
+    "test:full": "npm run build && node test.js --comprehensive"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "cli",
+    "scaffold",
+    "boilerplate",
+    "typescript",
+    "javascript",
+    "project-generator"
+  ],
+  "author": {
+    "name": "Sushant Verma",
+    "email": "sushantt.verma@gmail.com",
+    "url": "https://github.com/iamstyx"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "inquirer": "^9.3.7",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/inquirer": "^9.0.0",
+    "@types/fs-extra": "^11.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamstyx/react-startify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamstyx/react-startify/issues"
+  },
+  "homepage": "https://github.com/iamstyx/react-startify#readme"
+}

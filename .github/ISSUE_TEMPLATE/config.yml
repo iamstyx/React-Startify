@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/iamstyx/react-startify#readme
+    about: Check the README for usage instructions and examples
+  - name: 💬 Discussions
+    url: https://github.com/iamstyx/react-startify/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🌟 Show and Tell
+    url: https://github.com/iamstyx/react-startify/discussions/categories/show-and-tell
+    about: Share projects you've created with React-Startify

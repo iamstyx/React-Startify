@@ -1,0 +1,28 @@
+# Source files
+src/
+tsconfig.json
+
+# Development files
+test.js
+*.log
+.env*
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+.github/
+
+# Test projects
+test-project/
+
+# Documentation (optional - you might want to include these)
+EXAMPLES.md
+CHANGELOG.md
+
+# OS
+.DS_Store
+Thumbs.db
