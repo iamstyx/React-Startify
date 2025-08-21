@@ -7,7 +7,7 @@ import fs from "fs-extra";
 import path from "path";
 import { execSync } from "child_process";
 import ora from "ora";
-import { FrameworkManager, SupportedFramework } from "./frameworks";
+import { FrameworkManager, SupportedFramework, OptionalPackage, installOptionalPackages } from "./frameworks";
 import { getMainContent } from "./templates";
 
 interface ProjectOptions {
@@ -15,6 +15,7 @@ interface ProjectOptions {
   language: "typescript" | "javascript";
   packageManager: "npm" | "yarn" | "pnpm";
   framework: SupportedFramework;
+  optionalPackages: OptionalPackage[];
 }
 
 const packageJson = require("../package.json");
@@ -47,6 +48,9 @@ program
   .option("--tailwind", "Include Tailwind CSS")
   .option("--bootstrap", "Include Bootstrap")
   .option("--no-framework", "Skip CSS framework")
+  .option("--axios", "Include Axios for HTTP requests")
+  .option("--react-icons", "Include React Icons")
+  .option("--all-packages", "Include all optional packages")
   .action(async (projectName, options) => {
     displayHeader();
 
@@ -63,12 +67,22 @@ program
       else if (options.bootstrap) framework = "bootstrap";
       else if (options.noFramework) framework = "none";
 
+      // Determine optional packages from options
+      let optionalPackages: OptionalPackage[] = [];
+      if (options.allPackages) {
+        optionalPackages = ["axios", "react-icons"];
+      } else {
+        if (options.axios) optionalPackages.push("axios");
+        if (options.reactIcons) optionalPackages.push("react-icons");
+      }
+
       // Use command line arguments
       projectOptions = {
         projectName,
         language: options.typescript ? "typescript" : "javascript",
         packageManager: options.npm ? "npm" : options.yarn ? "yarn" : "pnpm",
         framework,
+        optionalPackages,
       };
     } else {
       // Interactive mode
@@ -120,6 +134,24 @@ program
           ],
           default: "none",
         },
+        {
+          type: "checkbox",
+          name: "optionalPackages",
+          message: "Which optional packages would you like to include?",
+          choices: [
+            { 
+              name: "📡 Axios - HTTP client for API requests", 
+              value: "axios",
+              checked: false 
+            },
+            { 
+              name: "🎨 React Icons - Popular icon libraries as React components", 
+              value: "react-icons",
+              checked: false 
+            },
+          ],
+          default: [],
+        },
       ]);
 
       projectOptions = answers as ProjectOptions;
@@ -129,7 +161,7 @@ program
   });
 
 async function createProject(options: ProjectOptions) {
-  const { projectName, language, packageManager, framework } = options;
+  const { projectName, language, packageManager, framework, optionalPackages } = options;
   const projectPath = path.resolve(process.cwd(), projectName);
 
   // Check if directory already exists
@@ -178,6 +210,16 @@ async function createProject(options: ProjectOptions) {
       cwd: projectPath,
     });
 
+    // Install optional packages if selected
+    if (optionalPackages && optionalPackages.length > 0) {
+      spinner.text = "Installing optional packages...";
+      await installOptionalPackages(projectPath, {
+        language,
+        packageManager,
+        packages: optionalPackages,
+      });
+    }
+
     spinner.succeed(chalk.green("✨ Project created successfully!"));
 
     // Success message with better formatting
@@ -216,6 +258,17 @@ async function createProject(options: ProjectOptions) {
         console.log(chalk.gray("   ✨ Bootstrap configured and ready to use"));
         console.log(chalk.gray("   📄 Bootstrap CSS and JS imported"));
       }
+    }
+
+    if (optionalPackages && optionalPackages.length > 0) {
+      console.log("\n" + chalk.magenta.bold("📦 Optional Packages:"));
+      optionalPackages.forEach((pkg) => {
+        if (pkg === "axios") {
+          console.log(chalk.gray("   📡 Axios - HTTP client for API requests"));
+        } else if (pkg === "react-icons") {
+          console.log(chalk.gray("   🎨 React Icons - Icon libraries as React components"));
+        }
+      });
     }
 
     console.log("\n" + chalk.yellow.bold("🚀 Next Steps:"));

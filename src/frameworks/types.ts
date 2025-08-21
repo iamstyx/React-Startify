@@ -1,6 +1,13 @@
 export interface CSSFrameworkConfig {
   language: "typescript" | "javascript";
   packageManager: "npm" | "yarn" | "pnpm";
+  optionalPackages?: OptionalPackage[];
+}
+
+export interface OptionalPackageConfig {
+  language: "typescript" | "javascript";
+  packageManager: "npm" | "yarn" | "pnpm";
+  packages: OptionalPackage[];
 }
 
 export interface CSSFramework {
@@ -18,3 +25,12 @@ export interface CSSFramework {
 }
 
 export type SupportedFramework = "tailwind" | "bootstrap" | "none";
+
+export type OptionalPackage = "axios" | "react-icons";
+
+export interface OptionalPackageDefinition {
+  name: string;
+  packages: string[];
+  typePackages?: string[];
+  description: string;
+}

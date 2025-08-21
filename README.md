@@ -97,6 +97,7 @@ The CLI will guide you through:
 - 🔤 Language preference (TypeScript/JavaScript)
 - 📦 Package manager choice (npm/yarn/pnpm)
 - 🎨 CSS framework selection (Tailwind CSS/Bootstrap/None)
+- 📦 Optional packages selection (Axios, React Icons)
 - ⚙️ Additional configurations
 
 ### ⚡ Command Line Mode
@@ -107,14 +108,14 @@ For automated workflows and CI/CD:
 # TypeScript + npm + Tailwind
 react-startify my-app --typescript --npm --tailwind
 
-# TypeScript + npm + Bootstrap
-react-startify my-app --typescript --npm --bootstrap
+# TypeScript + npm + Bootstrap + Optional packages
+react-startify my-app --typescript --npm --bootstrap --axios --react-icons
 
 # JavaScript + yarn (no CSS framework)
 react-startify my-app --javascript --yarn --no-framework
 
-# TypeScript + pnpm + Tailwind
-react-startify my-app --typescript --pnpm --tailwind
+# TypeScript + pnpm + Tailwind + All packages
+react-startify my-app --typescript --pnpm --tailwind --all-packages
 ```
 
 ### 🛠️ Command Options
@@ -129,6 +130,9 @@ react-startify my-app --typescript --pnpm --tailwind
 | `--tailwind`     |       | Include Tailwind CSS setup   |
 | `--bootstrap`    |       | Include Bootstrap setup      |
 | `--no-framework` |       | Skip CSS framework (default) |
+| `--axios`        |       | Include Axios HTTP client    |
+| `--react-icons`  |       | Include React Icons library  |
+| `--all-packages` |       | Include all optional packages |
 | `--help`         | `-h`  | Show help information        |
 | `--version`      | `-v`  | Show version number          |
 
@@ -265,6 +269,24 @@ npm run dev
 ```
 
 Perfect for: Enterprise applications, admin panels, data-heavy interfaces
+
+### 📦 Create a Feature-Rich App with Optional Packages
+
+```bash
+# Full-featured app with Axios and React Icons
+react-startify my-full-app --typescript --npm --bootstrap --axios --react-icons
+cd my-full-app
+npm run dev
+```
+
+Perfect for: API-driven applications, data visualization, modern UIs
+
+#### Available Optional Packages
+
+| Package | Description | Use Cases |
+|---------|-------------|-----------|
+| **Axios** | Promise-based HTTP client | API calls, data fetching, REST integration |
+| **React Icons** | Popular icon libraries as React components | UI icons, Font Awesome, Feather, Material Design |
 
 ### ⚡ Quick Prototype Setup
 
