@@ -2,6 +2,39 @@
 
 All notable changes to React-Startify will be documented in this file.
 
+## [1.2.0] - 2025-08-22
+
+### Added
+
+- **Bootstrap CSS Framework Support**: Complete Bootstrap integration with auto-installation
+  - New `--bootstrap` CLI option for command-line usage
+  - Interactive framework selection in wizard mode (Tailwind/Bootstrap/None)
+  - Bootstrap-styled welcome page with responsive grid system
+  - Automatic import of Bootstrap CSS and JS bundles
+  - Custom gradient backgrounds and professional card layouts
+
+### Enhanced
+
+- **CLI Experience**: Improved framework selection with better user prompts
+  - Replaced binary Tailwind option with comprehensive framework choice
+  - Updated help text and option descriptions
+  - Enhanced error handling for framework setup
+
+### Updated
+
+- **Documentation**: Comprehensive Bootstrap examples and usage instructions
+  - Updated README with Bootstrap integration details
+  - Added framework comparison table
+  - Enhanced command-line options documentation
+  - Created detailed release notes
+
+### Technical
+
+- **Package Metadata**: Updated version to 1.2.0 with enhanced keywords
+  - Added Bootstrap, CSS framework, and development-related tags
+  - Updated description to reflect multi-framework support
+  - Enhanced npm package discoverability
+
 ## [1.1.1] - 2025-08-22
 
 ### Refactored
